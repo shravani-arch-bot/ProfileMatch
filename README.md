@@ -168,3 +168,6 @@ streamlit>=1.28.0
 | Post-learning acceptance rate | ~68%+ (adaptive weights) |
 | NLP vocabulary | ~3,000 TF-IDF features |
 | MBTI pairs | 256 unique combinations |
+
+## Deployed Link
+https://profile-matcher-3iij.onrender.com 
