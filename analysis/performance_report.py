@@ -1,4 +1,4 @@
-﻿"""
+"""
 performance_report.py
 =====================
 Module 6: Performance Analysis & Visualizations
@@ -29,7 +29,7 @@ from feedback_loop import (
 from utils import load_feedback, load_users, get_user_weights
 from mbti_engine import get_mbti_matrix_df
 
-# â”€â”€ Style â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+# ── Style ──────────────────────────────────────────────────────────────────────
 sns.set_theme(style="darkgrid", palette="muted")
 ACCENT = "#6C63FF"
 ACCENT2 = "#FF6584"
@@ -49,7 +49,7 @@ def styled_fig(figsize=(12, 6), title: str = ""):
     return fig
 
 
-# â”€â”€ Plot 1: Accuracy Before vs After Feedback Learning â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+# ── Plot 1: Accuracy Before vs After Feedback Learning ────────────────────────
 def plot_accuracy_improvement(perf_df: pd.DataFrame) -> str:
     fig = styled_fig((10, 5), "Accuracy Improvement Over Feedback Rounds")
     ax = fig.add_subplot(111, facecolor=CARD)
@@ -75,11 +75,11 @@ def plot_accuracy_improvement(perf_df: pd.DataFrame) -> str:
     plt.tight_layout()
     plt.savefig(path, dpi=150, bbox_inches="tight", facecolor=BG)
     plt.close()
-    print(f"  âœ“ Saved: {path}")
+    print(f"  ✓ Saved: {path}")
     return path
 
 
-# â”€â”€ Plot 2: Weight Evolution Per User Sample â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+# ── Plot 2: Weight Evolution Per User Sample ───────────────────────────────────
 def plot_weight_evolution(users_df: pd.DataFrame) -> str:
     sample_ids = users_df["user_id"].sample(min(8, len(users_df)), random_state=42).tolist()
 
@@ -96,9 +96,9 @@ def plot_weight_evolution(users_df: pd.DataFrame) -> str:
     fig = styled_fig((12, 5), "Learned Weight Distribution (Sample Users)")
     ax = fig.add_subplot(111, facecolor=CARD)
 
-    bars1 = ax.bar(x - width, w1_vals, width, label="w1 â€” Text Similarity", color=ACCENT, alpha=0.85)
-    bars2 = ax.bar(x,         w2_vals, width, label="w2 â€” MBTI Match",      color=ACCENT2, alpha=0.85)
-    bars3 = ax.bar(x + width, w3_vals, width, label="w3 â€” Location",        color=ACCENT3, alpha=0.85)
+    bars1 = ax.bar(x - width, w1_vals, width, label="w1 — Text Similarity", color=ACCENT, alpha=0.85)
+    bars2 = ax.bar(x,         w2_vals, width, label="w2 — MBTI Match",      color=ACCENT2, alpha=0.85)
+    bars3 = ax.bar(x + width, w3_vals, width, label="w3 — Location",        color=ACCENT3, alpha=0.85)
 
     # Default lines
     ax.axhline(0.50, color=ACCENT,  linestyle="--", linewidth=1, alpha=0.5, label="Default w1=0.50")
@@ -119,11 +119,11 @@ def plot_weight_evolution(users_df: pd.DataFrame) -> str:
     plt.tight_layout()
     plt.savefig(path, dpi=150, bbox_inches="tight", facecolor=BG)
     plt.close()
-    print(f"  âœ“ Saved: {path}")
+    print(f"  ✓ Saved: {path}")
     return path
 
 
-# â”€â”€ Plot 3: Score Distribution (Accepted vs Rejected) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+# ── Plot 3: Score Distribution (Accepted vs Rejected) ─────────────────────────
 def plot_score_distribution(feedback_df: pd.DataFrame, engine) -> str:
     accepted_scores, rejected_scores = [], []
 
@@ -162,11 +162,11 @@ def plot_score_distribution(feedback_df: pd.DataFrame, engine) -> str:
     plt.tight_layout()
     plt.savefig(path, dpi=150, bbox_inches="tight", facecolor=BG)
     plt.close()
-    print(f"  âœ“ Saved: {path}")
+    print(f"  ✓ Saved: {path}")
     return path
 
 
-# â”€â”€ Plot 4: MBTI Compatibility Heatmap â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+# ── Plot 4: MBTI Compatibility Heatmap ────────────────────────────────────────
 def plot_mbti_heatmap() -> str:
     df = get_mbti_matrix_df()
 
@@ -188,11 +188,11 @@ def plot_mbti_heatmap() -> str:
     plt.tight_layout()
     plt.savefig(path, dpi=150, bbox_inches="tight", facecolor=BG)
     plt.close()
-    print(f"  âœ“ Saved: {path}")
+    print(f"  ✓ Saved: {path}")
     return path
 
 
-# â”€â”€ Plot 5: Industry Distribution â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+# ── Plot 5: Industry Distribution ─────────────────────────────────────────────
 def plot_industry_distribution(users_df: pd.DataFrame) -> str:
     counts = users_df["industry"].value_counts()
 
@@ -216,11 +216,11 @@ def plot_industry_distribution(users_df: pd.DataFrame) -> str:
     plt.tight_layout()
     plt.savefig(path, dpi=150, bbox_inches="tight", facecolor=BG)
     plt.close()
-    print(f"  âœ“ Saved: {path}")
+    print(f"  ✓ Saved: {path}")
     return path
 
 
-# â”€â”€ Plot 6: Top Match Score Breakdown â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+# ── Plot 6: Top Match Score Breakdown ─────────────────────────────────────────
 def plot_match_breakdown(engine, user_id: str = "U001") -> str:
     matches = engine.get_top_matches(user_id, n=5)
 
@@ -253,16 +253,16 @@ def plot_match_breakdown(engine, user_id: str = "U001") -> str:
     plt.tight_layout()
     plt.savefig(path, dpi=150, bbox_inches="tight", facecolor=BG)
     plt.close()
-    print(f"  âœ“ Saved: {path}")
+    print(f"  ✓ Saved: {path}")
     return path
 
 
-# â”€â”€ Text Report â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+# ── Text Report ────────────────────────────────────────────────────────────────
 def generate_text_report(perf_df: pd.DataFrame, rates: dict, updated_users: int) -> str:
     sep = "=" * 60
     report = f"""
 {sep}
-  PROFILE-BASED MATCHING ALGORITHM â€” PERFORMANCE REPORT
+  PROFILE-BASED MATCHING ALGORITHM — PERFORMANCE REPORT
 {sep}
 
 DATASET SUMMARY
@@ -274,7 +274,7 @@ DATASET SUMMARY
 FEEDBACK LOOP PERFORMANCE
 --------------------------
   Users with updated weights : {updated_users}
-  Threshold for prediction   : Score â‰¥ 55% â†’ Accept
+  Threshold for prediction   : Score ≥ 55% → Accept
 
   BEFORE adaptive learning:
     Predicted acceptance rate = {rates['predicted_accept_before']}%
@@ -294,13 +294,13 @@ ACCURACY ACROSS TRAINING ROUNDS
 
 INTERPRETATION
 --------------
-  â€¢ The adaptive feedback loop personalizes weights (w1, w2, w3)
+  • The adaptive feedback loop personalizes weights (w1, w2, w3)
     per user based on their accept/reject history.
-  â€¢ Users who prefer text-similar matches see w1 increased.
-  â€¢ Users who prefer personality-matched partners see w2 increased.
-  â€¢ The model converges after ~5 interactions per user.
+  • Users who prefer text-similar matches see w1 increased.
+  • Users who prefer personality-matched partners see w2 increased.
+  • The model converges after ~5 interactions per user.
 
-DEFAULT WEIGHTS â†’ ADAPTED EXAMPLE
+DEFAULT WEIGHTS → ADAPTED EXAMPLE
 ------------------------------------
   Default: w1=0.50 (Text) | w2=0.30 (MBTI) | w3=0.20 (Location)
   Adapted: Varies per user (see weight_evolution.png)
@@ -308,14 +308,14 @@ DEFAULT WEIGHTS â†’ ADAPTED EXAMPLE
 {sep}
 """
     rpath = os.path.join(OUTPUT_DIR, "performance_report.txt")
-    with open(rpath, "w") as f:
+    with open(rpath, "w", encoding="utf-8") as f:
         f.write(report)
-    print(f"  âœ“ Saved: {rpath}")
+    print(f"  ✓ Saved: {rpath}")
     print(report)
     return rpath
 
 
-# â”€â”€ Main â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+# ── Main ───────────────────────────────────────────────────────────────────────
 def run_all():
     print("\n[1] Loading data & engine...")
     users_df = load_users()
@@ -343,9 +343,8 @@ def run_all():
     print("\n[6] Generating text report...")
     generate_text_report(perf_df, rates, updated_users=len(updated))
 
-    print(f"\nâœ“ All outputs saved to: {OUTPUT_DIR}/")
+    print(f"\n✓ All outputs saved to: {OUTPUT_DIR}/")
 
 
 if __name__ == "__main__":
     run_all()
-

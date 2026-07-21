@@ -120,15 +120,15 @@ def normalize_weights(w: dict) -> dict:
 def score_to_label(score: float) -> str:
     """Convert numeric score to human-readable label."""
     if score >= 80:
-        return "Excellent Match"
+        return "Excellent Match 🌟"
     elif score >= 65:
-        return "Strong Match"
+        return "Strong Match ✅"
     elif score >= 50:
-        return "Good Match"
+        return "Good Match 👍"
     elif score >= 35:
-        return "Moderate Match"
+        return "Moderate Match 🤝"
     else:
-        return "Low Match"
+        return "Low Match ❌"
 
 
 def format_match_result(rank: int, match: dict) -> str:

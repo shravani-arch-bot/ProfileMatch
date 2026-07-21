@@ -609,7 +609,7 @@ with st.expander("ℹ️ How the Algorithm Works", expanded=False):
 
 st.markdown("""
 <div style="text-align:center; color:#30363D; font-size:0.75rem; padding:2rem 0 1rem 0;">
-    Profile Matcher — Intelligent Profile-Based Matching · Built with NLP + ML · 
+    Profile Matcher — Profile-Based Matching Algorithm · Built with NLP + ML · 
     <span style="color:#6C63FF;">Powered by Streamlit</span>
 </div>
 """, unsafe_allow_html=True)

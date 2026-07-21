@@ -236,16 +236,16 @@ def get_engine(users_path: str = "data/users.csv") -> ScoringEngine:
     return _engine_instance
 
 
-# -- CLI demo ------------------------------------------------------------------
+# ── CLI demo ──────────────────────────────────────────────────────────────────
 if __name__ == "__main__":
     engine = get_engine()
 
-    print("\n-- Compatibility Score: U001 vs U010 --")
+    print("\n── Compatibility Score: U001 vs U010 ──")
     result = engine.get_compatibility_score("U001", "U010", return_breakdown=True)
     for k, v in result.items():
         print(f"  {k}: {v}")
 
-    print("\n-- Top 5 Matches for U001 --")
+    print("\n── Top 5 Matches for U001 ──")
     matches = engine.get_top_matches("U001", n=5)
     for i, m in enumerate(matches, 1):
         print(format_match_result(i, m))

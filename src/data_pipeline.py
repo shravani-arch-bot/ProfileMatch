@@ -60,7 +60,7 @@ FIRST_NAMES = [
     "Sahil", "Nisha", "Raj", "Isha", "Abhinav", "Shalini", "Hemant", "Ruchika",
     "Ashish", "Vandana", "Tushar", "Madhuri", "Vivek", "Padma", "Sandeep",
     "Geeta", "Pankaj", "Sulekha", "Naveen", "Kavitha", "Sumit", "Charulata",
-    "Girish", "Yamini", "Manoj", "Sujata", "Chirag", "Bhumi",
+    "Girish", "Shravani", "Manoj", "Sujata", "Chirag", "Bhumi",
 ]
 
 LAST_NAMES = [
@@ -415,12 +415,12 @@ def run_pipeline():
     print("Generating user profiles...")
     users_df = generate_users(n=75)
     users_df.to_csv("data/users.csv", index=False)
-    print(f"  [OK] data/users.csv created - {len(users_df)} users")
+    print(f"  ✓ data/users.csv created — {len(users_df)} users")
 
     print("Generating feedback interactions...")
     feedback_df = generate_feedback(users_df, interactions_per_user=7)
     feedback_df.to_csv("data/feedback.csv", index=False)
-    print(f"  [OK] data/feedback.csv created - {len(feedback_df)} interactions")
+    print(f"  ✓ data/feedback.csv created — {len(feedback_df)} interactions")
 
     print("\nSample users:")
     print(users_df[["user_id", "name", "industry", "mbti_type", "location"]].head(5).to_string(index=False))

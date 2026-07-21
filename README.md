@@ -33,7 +33,7 @@ Outputs 6 plots + text report to `analysis/outputs/`.
 ## 📁 Project Structure
 
 ```
-unlox_major1/
+profile-matcher/
 ├── data/
 │   ├── users.csv               # 75 synthetic user profiles
 │   ├── feedback.csv            # 500+ user interactions

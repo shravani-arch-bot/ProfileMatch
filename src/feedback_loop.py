@@ -150,7 +150,7 @@ def run_feedback_learning(
             )
 
     if verbose:
-        print(f"\n  [OK] Updated weights for {len(updated)} users. "
+        print(f"\n  ✓ Updated weights for {len(updated)} users. "
               f"Skipped {skipped} (insufficient feedback).")
     return updated
 

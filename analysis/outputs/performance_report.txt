@@ -18,7 +18,7 @@ FEEDBACK LOOP PERFORMANCE
     Predicted acceptance rate = 3.44%
 
   AFTER adaptive learning:
-    Predicted acceptance rate = 40.51%
+    Predicted acceptance rate = 40.4%
 
 ACCURACY ACROSS TRAINING ROUNDS
 ---------------------------------
